@@ -1,0 +1,70 @@
+@mixin from($bp) {
+  @if map-has-key($breakpoints, $bp) {
+    @media screen and (min-width: map_get($breakpoints, $bp)) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $bp) {
+      @content;
+    }
+  }
+}
+
+@mixin to($to) {
+  @if $to==sm {
+    @content;
+  } @else {
+    @media screen and (max-width: getBp($to) - 1px) {
+      @content;
+    }
+  }
+}
+
+@mixin fromTo($from, $to) {
+  @if getBp($to) >getBp($from) {
+    @media screen and (min-width: getBp($from)) and (max-width: getBp($to) - 1px) {
+      @content;
+    }
+  } @else {
+    @error "El segundo argumento del mixin fromTo debe ser mayor que el primero";
+  }
+}
+
+@mixin transition($transition...) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+// generic transform
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// rotate
+@mixin rotate($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+@mixin round {
+  border-radius: 0.25rem;
+}
+
+@mixin radius {
+  border-radius: 1.5rem;
+}
+
+@mixin circle {
+  border-radius: 50%;
+}
+
+@mixin border($direction, $width, $style, $color) {
+  border-#{$direction}: $width $style $color;
+}
+@mixin border-df($width, $style, $color) {
+  border: $width $style $color;
+}

@@ -1,0 +1,116 @@
+// Anchos personalizados
+$max-grid-columns: 12 !default;
+@mixin grid-column-width($i) {
+  // La cantidad de gaps es igual a la cantidad de columnas menos 1
+  $n: #{$i - 1};
+  // Formula para calcular el ancho de cada columna
+  $column-width: calc((100% - var(--gap) * #{$n}) / #{$i});
+  // Define las columnas en el contenedor
+  grid-template-columns: repeat($i, $column-width);
+}
+@for $i from 1 through 20 {
+  .s-#{$i*5} {
+    width: #{$i * 5%};
+  }
+}
+
+@include from(l) {
+  @for $i from 1 through 20 {
+    .l-#{$i*5} {
+      width: #{$i * 5%};
+    }
+  }
+}
+.grid {
+  display: grid;
+  grid-template-columns: 100%;
+  column-gap: var(--gap);
+  width: calc(100% - 2rem);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  max-width: var(--max-width);
+
+  @for $i from 0 through 8 {
+    &.gap-#{$i} {
+      --gap: #{$l-unit * $i};
+    }
+  }
+  &.row-gap {
+    grid-row-gap: var(--gap);
+  }
+  &.row-gap-05 {
+    grid-row-gap: 0.5rem;
+  }
+  &.row-gap-3 {
+    grid-row-gap: 30px;
+  }
+  &.row-gap-4 {
+    grid-row-gap: 4rem;
+  }
+  &.full {
+    width: 100%;
+    max-width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  // @include from(lg) {
+  //   width: 100%;
+  //   margin-left: auto;
+  //   margin-right: auto;
+
+  //   &.cols-lg-2 {
+  //     grid-template-columns: repeat(2, calc((100% - var(--gap) * 1) / 2));
+  //   }
+  //   &.cols-lg-3 {
+  //     grid-template-columns: repeat(3, calc((100% - var(--gap) * 2) / 3));
+  //   }
+  //   &.cols-lg-4 {
+  //     grid-template-columns: repeat(4, calc((100% - var(--gap) * 3) / 4));
+  //   }
+
+  //   & > .s-span-2 {
+  //     grid-column-end: span 2;
+  //   }
+  //   & > .s-span-3 {
+  //     grid-column-end: span 3;
+  //   }
+  // }
+  @each $size, $screen-size in $breakpoints {
+    @include from($size) {
+      @for $i from 1 through $max-grid-columns {
+        // Una columna
+        @if $i == 1 {
+          &.cols-#{$size}-1,
+          &.#{$size}-grid-1 {
+            grid-template-columns: 100%;
+          }
+        }
+
+        // Más de una columna
+        @if $i > 1 {
+          &.cols-#{$size}-#{$i},
+          &.#{$size}-grid-#{$i} {
+            @include grid-column-width($i);
+          }
+        }
+        // Columnas en los items
+        > .span-#{$size}-#{$i},
+        > .#{$size}-cols-#{$i} {
+          grid-column-end: span $i;
+        }
+        // rows en los items
+        > .#{$size}-rows-#{$i} {
+          grid-row-end: span $i;
+        }
+        // Inicio de columna en items
+        > .#{$size}-x-#{$i} {
+          grid-column-start: $i;
+        }
+        // Inicio de fila en items
+        > .#{$size}-y-#{$i} {
+          grid-row-start: $i;
+        }
+      }
+    }
+  }
+}

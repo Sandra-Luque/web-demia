@@ -1,0 +1,41 @@
+.main-venues {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  min-height: calc(100vh - var(--header-height));
+  width: 100vw;
+  transition: all cubic-bezier(0.77, 0, 0.175, 1);
+  overflow-y: scroll;
+  margin-top: var(--header-height);
+  background: linear-gradient(to right, #8c0383, #b22281);
+
+  //   background: #8c0383;
+  transform: scale(1, 0);
+  &.show {
+    // opacity: 1;
+    // visibility: visible;
+    transform: scale(1, 1);
+  }
+}
+.venues-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - var(--header-height));
+  width: 100vw;
+  color: var(--color-white);
+  animation-delay: 0.3s;
+  &.animated {
+    animation-name: fadeIn;
+  }
+}
+.fadeIn {
+  animation-name: fadeIn;
+}
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}

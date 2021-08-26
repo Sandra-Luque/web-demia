@@ -1,0 +1,87 @@
+@mixin btn {
+  display: block;
+  margin-right: 0px;
+  margin-left: 0px;
+  padding: 10px 24px;
+  float: left;
+  border-radius: 100px;
+  background-color: var(--color);
+  -webkit-transition: background-color 400ms ease;
+  transition: background-color 400ms ease;
+  font-family: Lato, sans-serif;
+  font-size: 0.7em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  &:hover {
+    transition: background-color 0.4s ease 0s, opacity 200ms ease 0s, transform 600ms ease 0s;
+  }
+  &[class*='center-'] {
+    position: static;
+    top: 0px;
+    right: -25px;
+    width: var(--size-width);
+    margin: 15px auto 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    float: none;
+    border-radius: 1000px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+  &.right {
+    float: right;
+  }
+}
+.button {
+  @include btn;
+  &.btn-xs {
+    float: none;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 16px;
+    font-weight: 400;
+    width: 265px;
+  }
+}
+
+.center-m {
+  --size-width: 190px;
+}
+.center-md {
+  --size-width: 200px;
+}
+
+.w-button {
+  display: inline-block;
+  padding: 9px 15px;
+  background-color: #3898ec;
+  color: white;
+  border: 0;
+  line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.w-color {
+  --color: var(--color-white);
+}
+.outline {
+  border: 2px solid var(--color);
+  background-color: transparent;
+  color: var(--color);
+  &:hover {
+    background-color: var(--color);
+    // color: #000;
+    color: var(--color-white);
+  }
+}
+.w-outline {
+  --color: var(--color-white);
+  &:hover {
+    background-color: $color-fisrt;
+    border-color: $color-fisrt;
+  }
+}

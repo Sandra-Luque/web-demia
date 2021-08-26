@@ -1,0 +1,36 @@
+.box-service {
+  &:not(:first-child) {
+    border-top: 1px solid var(--color-border);
+  }
+}
+.service-box {
+  @include from(lg) {
+    margin-top: 1.5rem;
+  }
+}
+.service-box-icon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    height: 5rem;
+  }
+  &:hover {
+    filter: saturate(200%) brightness(75%);
+  }
+}
+.service-box-title {
+  font-size: 1.2rem;
+  line-height: 20px;
+  color: var(--subTitle-color);
+}
+.c-sticky {
+  position: sticky;
+  // top: calc(var(--header-height) + var(--topbar-height) + 2rem);
+  top: calc(var(--header-height) + 2rem);
+  margin-top: -1776px;
+  &.aside-topHeader {
+    top: var(--header-height);
+  }
+}

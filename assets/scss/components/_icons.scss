@@ -1,0 +1,77 @@
+@mixin icon($icon, $pseudo, $font: null, $color: null, $margin: 0) {
+  &::#{$pseudo} {
+    font-family: quote($font);
+    content: map-get($icons, $icon);
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 600;
+    color: $color;
+  }
+
+  @if $pseudo == after {
+    &::#{$pseudo} {
+      margin-left: $margin;
+    }
+  } @else if $pseudo == before {
+    &::#{$pseudo} {
+      margin-right: $margin;
+    }
+  }
+}
+
+$icons: (
+  user: "\f007",
+  phone: "\f2a0",
+  marker: "\f3c5",
+  check: "\f00c",
+  calendar: "\f274",
+  sort-up: "\f0de",
+  sort-down: "\f0d7",
+  caret-right: "\f0da",
+  caret-down: "\f0d7",
+  arrow-up: "\f30c",
+  arrow-down: "\f309",
+  square-line: "\67",
+  check-square: "\68",
+);
+[class*="iconDer-"] {
+  --iconDer: url(../imagenes/icons/cirlce-check.svg);
+  position: relative;
+  padding-left: 1.25rem;
+  &:before {
+    content: "";
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    background: var(--iconDer) no-repeat 50%/1rem 1rem;
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+  }
+}
+.iconDer-pin {
+  --iconDer: url(../imagenes/icons/icon-pin-map.svg);
+}
+.iconDer-phone {
+  --iconDer: url(../imagenes/icons/icon-phone.svg);
+}
+.iconDer-whatsapp {
+  --iconDer: url(../imagenes/icons/whatsapp.svg);
+}
+.iconDer-calendar {
+  --iconDer: url(../imagenes/icons/icon-calendar.svg);
+}
+// icons mask
+[class*="iconven"] {
+  height: var(--iconven-size);
+  width: var(--iconven-size);
+  background: var(--iconven-img);
+}
+.iconven {
+  --iconven-size: 2rem;
+  --iconven-img: url(../imagenes/icons/icon-sede.svg);
+}
+
+.m-iconven-venues {
+  --iconven-size: 3rem;
+}

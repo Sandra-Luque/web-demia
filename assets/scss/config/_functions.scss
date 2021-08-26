@@ -1,0 +1,19 @@
+@function getBp($bp) {
+  @return map-get($breakpoints, $bp);
+}
+
+@function rem($pfx) {
+  @return ($pfx / 16px) * 1rem;
+}
+
+@function get-path-to-assets($images-path) {
+  @return $images-path;
+}
+
+@function image($type, $img) {
+  @if $type {
+    @return url(#{$images-path}/#{$type}/#{$img});
+  } @else {
+    @return url(#{$images-path}/#{$img});
+  }
+}

@@ -1,0 +1,71 @@
+footer {
+  background-color: #2d3440;
+  //   background-color: var(--color-second);
+  padding: 2rem 0rem;
+  margin-top: 1rem;
+  .icn-list {
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--color-white);
+  }
+}
+.footer-col {
+  align-self: flex-start;
+  h4 {
+    color: #fff;
+    font-size: 17px;
+    &:after {
+      background: var(--color-third);
+      content: '';
+      display: block;
+      height: 3px;
+      margin: 15px 0px 20px;
+      width: 60px;
+    }
+  }
+  p {
+    line-height: 1.5;
+    margin-top: 15px;
+    font-weight: 13px;
+    color: #fff;
+  }
+}
+.footer-logo {
+  width: 250px;
+}
+.popular-links {
+  ul {
+    padding: 0;
+  }
+  li {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 2.5;
+    @include icon(caret-right, before, 'Font Awesome 5 Free', $color-white, 0.5em);
+  }
+}
+.footer-bottom {
+  padding-top: 1rem;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1 1 100%;
+  @include border('top', 1px, solid, var(--color-border));
+
+  .fb-copyright {
+    flex: 1 1 80%;
+    p {
+      color: var(--color-white);
+    }
+  }
+
+  .fb-social {
+    flex: 1 1 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}

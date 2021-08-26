@@ -1,0 +1,80 @@
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  height: var(--header-height);
+  &.fixed-effect {
+    -webkit-animation: 0.7s slide-down;
+    animation: 0.7s slide-down;
+    box-shadow: 0 3px 3px rgba(204, 204, 204, 0.5);
+    @include from(lg) {
+      --header-height: 5rem;
+    }
+  }
+}
+.top-header {
+  color: var(--color-white);
+  font-size: 14px;
+  line-height: 1.2em;
+  letter-spacing: 0.5px;
+  word-spacing: -2px;
+  align-items: center;
+  min-height: 2.5rem;
+  transition: all 0.5s ease-in-out;
+  display: none;
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+  .header-phone,
+  .header-info {
+    &::before {
+      opacity: 0.5;
+      font-size: 1em;
+      margin-top: -3px;
+    }
+  }
+  .header-phone {
+    @include icon(phone, before, "Font Awesome 5 Free", $color-white, 0.5em);
+    margin-right: 1em;
+  }
+  .header-info {
+    position: relative;
+    margin-right: 1.8125em;
+    padding-right: 1.875em;
+    @include icon(marker, before, "Font Awesome 5 Free", $color-white, 0.5em);
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: -1px;
+      width: 1px;
+      height: 22px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+  @include to(lg) {
+    display: none;
+  }
+}
+.header-bolck {
+  grid-template-columns: max-content 1fr;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  align-items: center;
+  align-content: center;
+  // justify-content: space-between;
+  // align-items: center;
+  // height: $header-heightMobile;
+  // @include from(lg) {
+  //   height: $header-height;
+  // }
+  //background: $firstColor;
+  //border-bottom: 1.5px solid $thirdColor;
+}

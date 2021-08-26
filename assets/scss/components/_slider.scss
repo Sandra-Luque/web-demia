@@ -1,0 +1,47 @@
+.slide-txt1 {
+  font-size: 54px;
+  line-height: 1.26em;
+  font-weight: 400;
+  font-family: 'Poppins', serif;
+  color: #fff;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.slider-draggable {
+  position: relative;
+  overflow: hidden;
+  height: 485px;
+}
+.slide {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  &.active {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    img {
+      animation: slide 4s ease infinite;
+    }
+  }
+  .container {
+    flex-grow: 1;
+  }
+  .caption {
+    width: 50%;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
