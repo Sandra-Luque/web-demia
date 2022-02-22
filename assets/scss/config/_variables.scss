@@ -6,8 +6,9 @@ $images-path: "../imagenes";
   // layout
   --vertical-block-space: 2rem;
   --gap: #{$l-unit * 4}; // 1rem
-  --max-width: #{$max-width};
+  // --max-width: #{$max-width};
   --duration: 0.25s;
+
 }
 
 //breackponts
@@ -17,11 +18,17 @@ $breakpoints: (
   lg: 1024px,
   xl: 1440px,
 );
-$max-width: 1200px;
+
 $header-height: 3rem;
+
 @include from(lg) {
   $header-height: 7rem;
+  $max-width: 1400px !default;
 }
+@include fromTo(sm, md) {
+  $max-width: 1150px !default;
+}
+
 // Variables de apilamiento (z-index)
 :root {
   --z-back: -10;

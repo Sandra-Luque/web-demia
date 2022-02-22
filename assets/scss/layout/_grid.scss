@@ -14,7 +14,7 @@ $max-grid-columns: 12 !default;
   }
 }
 
-@include from(l) {
+@include from(lg) {
   @for $i from 1 through 20 {
     .l-#{$i*5} {
       width: #{$i * 5%};
@@ -28,7 +28,7 @@ $max-grid-columns: 12 !default;
   width: calc(100% - 2rem);
   margin-left: 1rem;
   margin-right: 1rem;
-  max-width: var(--max-width);
+  max-width: $max-width;
 
   @for $i from 0 through 8 {
     &.gap-#{$i} {
