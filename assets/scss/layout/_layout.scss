@@ -1,22 +1,49 @@
-// .lg-container {
-//   max-width: $max-width;
-//   padding-left: 1rem;
-//   padding-right: 1rem;
-//   display: flex;
-//   margin-right: auto;
-//   margin-left: auto;
-//   flex-wrap: wrap;
-//   @include to(lg) {
-//     max-width: 90%;
-//   }
-// }
-// .lg-section {
-//   margin-bottom: calc(var(--vertical-block-space) * 2);
-//   max-width: $max-width;
-//   padding-left: 1rem;
-//   padding-right: 1rem;
-// }
+$sides: (top, bottom, left, right);
 
+@for $i from 0 through 6 {
+  $unit: $l-unit * $i;
+  @if $i == 0 {
+    $unit: 0;
+  }
+
+  @each $side in $sides {
+    .m-#{str-slice($side, 0, 1)}-#{$i} {
+      margin-#{$side}: $unit;
+    }
+    .p-#{str-slice($side, 0, 1)}-#{$i} {
+      padding-#{$side}: $unit;
+    }
+    // Padding vertical
+    .py-#{$i} {
+      padding-top: $unit;
+      padding-bottom: $unit;
+    }
+    // Padding horizontal
+    .px-#{$i} {
+      padding-left: $unit;
+      padding-right: $unit;
+    }
+    // Padding total
+    .pxy-#{$i} {
+      padding: $unit;
+    }
+    // margin
+    // margin vertical
+    .my-#{$i} {
+      margin-top: $unit;
+      margin-bottom: $unit;
+    }
+    // margin horizontal
+    .mx-#{$i} {
+      margin-left: $unit;
+      margin-right: $unit;
+    }
+    // margin total
+    .mxy-#{$i} {
+      margin: $unit;
+    }
+  }
+}
 .l-container {
   max-width: $max-width;
   padding-left: 1rem;
@@ -39,6 +66,7 @@
   position: relative;
   margin-bottom: calc(var(--vertical-block-space) * 1.5);
   color: var(--title-color);
+  font-family: $heading-font;
   &:before {
     left: 50%;
     bottom: 0;

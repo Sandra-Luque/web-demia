@@ -54,6 +54,7 @@
     &:first-child {
       margin-left: 0;
     }
+
     &.with-submenu {
       &:hover {
         .dropdown-icon {
@@ -63,12 +64,8 @@
           transform: none;
           opacity: 1;
           pointer-events: auto;
-          border-bottom-right-radius: 0;
-          border-top-right-radius: 0;
-        }
-        .main-menu__link {
-          color: var(--color);
-          transition: 0.3s;
+          // border-bottom-right-radius: 0;
+          // border-top-right-radius: 0;
         }
       }
     }
@@ -87,27 +84,39 @@
     .dropdown-icon {
       transition: transform var(--dropdown-time);
     }
+    &:hover {
+      .main-menu__link {
+        color: var(--color);
+        transition: 0.3s;
+      }
+    }
   }
   @include to(lg) {
     flex-direction: column;
   }
 }
 // .main-menu__link,
-// .actions-item {
-//   &:hover {
-//     color: var(--color);
-//     transition: 0.3s;
-//   }
-// }
+.actions-item {
+  font-size: 1.7rem;
+  &:hover {
+    color: var(--color);
+    transition: 0.3s;
+  }
+}
 .dropdown-menu-container {
-  min-width: 572px !important;
+  // min-width: 572px !important;
   background: var(--color-white);
   opacity: 0;
-  min-width: 37.5rem;
+  // min-width: 37.5rem;
   margin-top: 0.5rem;
   transform: translateY(1rem);
-  border-radius: 0.5rem;
+  border-top: 2px solid var(--color);
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  // border-radius: 0.5rem;
+  box-shadow: 1px 3px 8px 1px rgba(0, 0, 0, 0.13);
   transition: opacity var(--dropdown-time), transform var(--dropdown-time);
+  z-index: var(--z-normal);
 }
 .subItem-menu {
   padding: 0.5rem;
@@ -115,6 +124,7 @@
   border-bottom: 1px solid var(--color-white);
   // border-right: 1px solid var(--grey-300);
   transition: opacity var(--duration);
+
   &:first-child {
     border-top: none;
   }
@@ -127,13 +137,21 @@
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
     // border-right: 1px solid var(--grey-200);
+    color: var(--color);
+    transition: 0.3s;
+    .dropdown-item {
+      color: var(--color);
+      transition: 0.3s;
+    }
   }
   &:hover:first-child {
     border-top: none;
-    border-top-left-radius: 0.5rem;
+    // border-top-left-radius: 0.5rem;
   }
   &:hover:last-child {
     border-bottom: none;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
   }
 }
 .main-menu__link {

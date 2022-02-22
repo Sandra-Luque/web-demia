@@ -2,7 +2,7 @@
 // @import url('https://fonts.googleapis.com/css?family=Lato|Roboto:400,700,900&display=swap');
 // @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&family=Poppins:wght@300;400;500;600&display=swap");
-$heading-font: "Poppins", sans-serif;
+$heading-font: "Swiss-Bold", sans-serif;
 $body-font: "Open Sans", sans-serif;
 @mixin header-font {
   line-height: 1em;
@@ -30,7 +30,8 @@ h4 {
   margin-bottom: 5px;
 }
 h5 {
-  font-family: "Poppins", serif;
+  // font-family: "Poppins", serif;
+  font-family: $heading-font;
   line-height: 1em;
   margin-bottom: 20px;
   font-weight: 600;

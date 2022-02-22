@@ -2,7 +2,7 @@
   font-size: 54px;
   line-height: 1.26em;
   font-weight: 400;
-  font-family: 'Poppins', serif;
+  font-family: "Poppins", serif;
   color: #fff;
   margin: 0;
   text-transform: uppercase;
@@ -11,7 +11,14 @@
 .slider-draggable {
   position: relative;
   overflow: hidden;
-  height: 485px;
+  // height: 505px;
+  @include from(lg) {
+    height: calc(100vh - ( var(--header-height) + 8rem ));
+  }
+  @include fromTo(sm,md) {
+   height:  calc(100vh - 24rem);
+  }
+  height: 16rem;
 }
 .slide {
   position: absolute;
